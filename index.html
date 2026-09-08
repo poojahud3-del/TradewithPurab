@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Trade With Purab</title>
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel -->
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -13,94 +14,275 @@
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
 
-  fbq('init', '5392254280998873');
-  fbq('track', 'PageView');
+  fbq('init','5392254280998873');
+  fbq('track','PageView');
   </script>
 
   <noscript>
     <img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=5392254280998873&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel Code -->
+  <!-- End Meta Pixel -->
 
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
     body{
-      font-family:Arial,sans-serif;
+      font-family:Arial,Helvetica,sans-serif;
+      min-height:100vh;
+      color:#fff;
+      background:#050505;
+      overflow-x:hidden;
+    }
+
+    body::before,
+    body::after{
+      content:"";
+      position:fixed;
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      filter:blur(100px);
+      opacity:.18;
+      z-index:-1;
+      animation:float 7s ease-in-out infinite alternate;
+    }
+
+    body::before{
+      background:#00aaff;
+      top:-100px;
+      left:-100px;
+    }
+
+    body::after{
+      background:#0066ff;
+      right:-100px;
+      bottom:-100px;
+      animation-delay:2s;
+    }
+
+    @keyframes float{
+      from{transform:translate(0,0)}
+      to{transform:translate(40px,30px)}
+    }
+
+    .container{
+      width:100%;
       min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:linear-gradient(135deg,#050505,#151515);
-      color:#fff;
-      text-align:center;
+      padding:25px 15px;
     }
 
-    .box{
-      width:90%;
-      max-width:420px;
-      padding:40px 25px;
-      border-radius:22px;
-      background:#111;
-      box-shadow:0 0 30px #000;
+    .card{
+      width:100%;
+      max-width:440px;
+      padding:38px 24px 28px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:28px;
+      background:rgba(17,17,17,.82);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.55),
+        inset 0 1px rgba(255,255,255,.08);
+    }
+
+    .logo{
+      width:78px;
+      height:78px;
+      margin:0 auto 20px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+      font-weight:900;
+      background:linear-gradient(135deg,#00b7ff,#0055ff);
+      box-shadow:0 0 35px rgba(0,153,255,.35);
+    }
+
+    .badge{
+      display:inline-block;
+      padding:7px 13px;
+      margin-bottom:15px;
+      border-radius:30px;
+      font-size:12px;
+      font-weight:bold;
+      letter-spacing:1px;
+      background:rgba(0,170,255,.1);
+      border:1px solid rgba(0,170,255,.25);
+      color:#65d1ff;
     }
 
     h1{
-      font-size:32px;
-      margin-bottom:12px;
+      font-size:36px;
+      line-height:1.05;
+      font-weight:900;
+      letter-spacing:-1px;
+      margin-bottom:13px;
     }
 
-    p{
-      color:#bbb;
-      margin-bottom:28px;
-      font-size:16px;
+    h1 span{
+      color:#29bfff;
     }
 
-    .btn{
-      display:block;
+    .subtitle{
+      color:#a7a7a7;
+      font-size:15px;
+      line-height:1.6;
+      margin-bottom:27px;
+    }
+
+    .telegram-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      padding:17px;
+      border-radius:14px;
       text-decoration:none;
-      background:#229ED9;
       color:#fff;
-      padding:16px;
-      border-radius:12px;
-      font-size:18px;
-      font-weight:bold;
+      font-size:17px;
+      font-weight:800;
+      background:linear-gradient(135deg,#229ed9,#147fc0);
+      box-shadow:0 12px 30px rgba(34,158,217,.25);
+      transition:.25s ease;
     }
 
-    .btn:active{
+    .telegram-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 35px rgba(34,158,217,.35);
+    }
+
+    .telegram-btn:active{
       transform:scale(.97);
     }
 
-    .small{
-      margin-top:20px;
-      font-size:12px;
-      color:#777;
+    .telegram-icon{
+      font-size:23px;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:9px;
+      margin-top:25px;
+    }
+
+    .feature{
+      padding:13px 5px;
+      border-radius:13px;
+      background:rgba(255,255,255,.045);
+      border:1px solid rgba(255,255,255,.07);
+    }
+
+    .feature strong{
+      display:block;
+      font-size:16px;
+      margin-bottom:4px;
+    }
+
+    .feature small{
+      color:#858585;
+      font-size:10px;
+    }
+
+    .divider{
+      height:1px;
+      background:rgba(255,255,255,.08);
+      margin:25px 0 18px;
+    }
+
+    .note{
+      color:#707070;
+      font-size:11px;
+      line-height:1.5;
+    }
+
+    .footer{
+      margin-top:15px;
+      color:#4f4f4f;
+      font-size:10px;
+    }
+
+    @media(max-width:380px){
+      h1{
+        font-size:31px;
+      }
+
+      .card{
+        padding:32px 18px 24px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="box">
-    <h1>TRADE WITH PURAB</h1>
+  <div class="container">
 
-    <p>Join our Telegram channel for trading updates.</p>
+    <div class="card">
 
-    <a
-      class="btn"
-      href="https://t.me/+K5fh54FKpElyNzU1"
-      onclick="fbq('track', 'Lead');"
-    >
-      JOIN TELEGRAM CHANNEL
-    </a>
+      <div class="logo">TP</div>
 
-    <div class="small">
-      Trade responsibly. No guaranteed returns.
+      <div class="badge">
+        ● TRADING COMMUNITY
+      </div>
+
+      <h1>
+        TRADE WITH <span>PURAB</span>
+      </h1>
+
+      <p class="subtitle">
+        Join our Telegram channel for trading updates,
+        market insights and educational content.
+      </p>
+
+      <a
+        class="telegram-btn"
+        href="https://t.me/+K5fh54FKpElyNzU1"
+        onclick="fbq('track','Lead');"
+      >
+        <span class="telegram-icon">➤</span>
+        JOIN TELEGRAM CHANNEL
+      </a>
+
+      <div class="features">
+
+        <div class="feature">
+          <strong>📊</strong>
+          <small>Market Updates</small>
+        </div>
+
+        <div class="feature">
+          <strong>📈</strong>
+          <small>Trading Insights</small>
+        </div>
+
+        <div class="feature">
+          <strong>🎯</strong>
+          <small>Learn & Grow</small>
+        </div>
+
+      </div>
+
+      <div class="footer">
+        © 2026 Trade With Purab
+      </div>
+
     </div>
+
   </div>
 
 </body>
